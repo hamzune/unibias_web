@@ -1,0 +1,87 @@
+<div class="aside-primary d-flex flex-column align-items-center flex-row-auto">
+  <!--begin::Primary-->
+  <div class="aside-brand d-flex flex-column align-items-center flex-column-auto py-5 py-lg-12" id="kt_brand"
+    [ngClass]="brandClasses">
+    <!--begin::Logo-->
+    <a class="brand-logo  mb-10">
+      <img alt="Logo" src="./assets/media/svg/logos/unibias.svg" class="max-h-40px" />
+    </a>
+    <!--end::Logo-->
+  </div>
+  <!--begin::Nav Wrapper-->
+  <div class="aside-nav d-flex flex-column align-items-center flex-column-fluid py-5 scroll scroll-pull">
+    <!--begin::Nav-->
+    <ul class="nav flex-column" role="tablist">
+      <!--begin::Item-->
+      <li class="nav-item mb-6" placement="right" ngbTooltip="Dashboard" ngbTooltipClass="tooltip" container="body">
+        <a class="nav-link btn btn-icon btn-clean btn-lg" [ngClass]="{ active: activeTabId === TABS[0] }"
+          (click)="setTab(TABS[0])" routerLink="/" data-toggle="tab" data-target="#kt_aside_tab_0" role="tab">
+          <span [inlineSVG]="'./assets/media/svg/icons/Layout/Layout-4-blocks.svg'" cacheSVG="true"
+            class="svg-icon svg-icon-2x"></span>
+        </a>
+      </li>
+      <!--end::Item---->
+      <!--begin::Item-->
+      <li class="nav-item mb-6" placement="right" ngbTooltip="Calendar" container="body">
+        <a class="nav-link btn btn-icon btn-clean btn-lg" data-toggle="tab"
+          [ngClass]="{ active: activeTabId === TABS[1] }" (click)="setTab(TABS[1])" routerLink="/calendar"
+          data-target="#kt_aside_tab_1" role="tab">
+          <span [inlineSVG]="'./assets/media/svg/icons/Layout/Layout-top-panel-6.svg'" cacheSVG="true"
+            class="svg-icon svg-icon-2x"></span>
+        </a>
+      </li>
+      <!--end::Item-->
+      <!--begin::Item-->
+      <li class="nav-item mb-6" placement="right" ngbTooltip="Settings" container="body">
+        <a class="nav-link btn btn-icon btn-clean btn-lg" [ngClass]="{ active: activeTabId === TABS[2] }"
+          (click)="setTab(TABS[2])" routerLink="/settings" data-toggle="tab" data-target="#kt_aside_tab_2" role="tab">
+          <span [inlineSVG]="'./assets/media/svg/icons/General/Settings-2.svg'" cacheSVG="true"
+            class="svg-icon svg-icon-2x"></span>
+
+        </a>
+      </li>
+      <!--end::Item-->
+    </ul>
+    <!--end::Nav-->
+  </div>
+  <!--end::Nav Wrapper-->
+  <!--begin::Footer -->
+
+  <div class="aside-footer d-flex flex-column align-items-center flex-column-auto py-4 py-lg-10">
+    <ul class="nav flex-column" role="tablist">
+      <!--begin::Item-->
+      <li class="nav-item mb-6" placement="right" ngbTooltip="Sign Out" container="body">
+        <a class="nav-link btn btn-icon btn-clean btn-lg" (click)="logout()" role="tab">
+          <i class="fas fa-sign-out-alt icon-2x"></i>
+        </a>
+      </li>
+      <!--end::Item-->
+    </ul>
+  </div>
+
+
+
+  <!--end::Primary-->
+</div>
+<ng-container *ngIf="disableAsideSecondaryDisplay">
+  <!--begin::Secondary-->
+  <div class="aside-secondary d-flex flex-row-fluid">
+    <!--begin::Workspace-->
+    <div class="aside-workspace scroll scroll-push my-2">
+      <!--begin::Tab Content-->
+      <div class="tab-content">
+        <!--begin::Tab Pane-->
+        <!-- <div class="tab-pane p-3 px-lg-7 py-lg-5 fade" [ngClass]="{ 'show active': activeTabId === TABS[1] }"
+          id="kt_aside_tab_1">
+          <app-aside-search></app-aside-search>
+        </div> -->
+        <!--end::Tab Pane-->
+        <!--begin::Tab Pane-->
+        <div class="tab-pane fade" id="kt_aside_tab_2" [ngClass]="{ 'show active': activeTabId === TABS[1] }">
+          <app-aside-static class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper"></app-aside-static>
+        </div>
+        <!--end::Tab Pane-->
+      </div>
+    </div>
+  </div>
+</ng-container>

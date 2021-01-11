@@ -141,11 +141,12 @@ export class LayoutInitService {
     }
 
     // Aside Secondary
-    if (this.layout.getProp('aside.secondary.display')) {
-      document.body.classList.add('aside-secondary-enabled');
-    } else {
-      document.body.classList.add('aside-secondary-disabled');
-    }
+    document.body.classList.add('aside-secondary-disabled');
+
+    // if (this.layout.getProp('aside.secondary.display')) {
+    //   document.body.classList.add('aside-secondary-enabled');
+    // } else {
+    // }
 
     // Check Aside
     if (this.layout.getProp('aside.self.display') !== true) {

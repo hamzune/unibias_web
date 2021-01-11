@@ -67,6 +67,7 @@ export class TopbarComponent implements OnInit, AfterViewInit {
     );
     // layout
     this.asideSecondaryDisplay = this.layout.getProp('aside.secondary.display');
+    
     this.asideSelfMinimizeToggle = this.layout.getProp('aside.self.minimize.toggle');
   }
 

@@ -62,6 +62,7 @@ export class AsideComponent implements OnInit {
     this.asideMenuScroll = this.layout.getProp('aside.menu.scroll') ? 1 : 0;
     this.asideMenuCSSClasses = `${this.asideMenuCSSClasses} ${this.asideMenuScroll === 1 ? 'scroll my-4 ps ps--active-y' : ''}`;
     this.disableAsideSecondaryDisplay = this.layout.getProp('aside.secondary.display');
+    
   }
 
 

@@ -5,7 +5,7 @@ export class UniversityModel {
   description: string;
   location: string;
 
-  setUser(university: any) {
+  setUnivesity(university: any) {
     this.id_university = university.id_university;
     this.name = university.name || '';
     this.description = university.description || '';

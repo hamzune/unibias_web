@@ -1,1 +1,4 @@
-<p>subscribe-subjects works!</p>
+<select class="custom-select" (change)="changeUniversity($event)" >
+    <option value="" disabled>Choose your university</option>
+    <option *ngFor="let university of universities" [value]="university">{{university.name}}</option>
+ </select>

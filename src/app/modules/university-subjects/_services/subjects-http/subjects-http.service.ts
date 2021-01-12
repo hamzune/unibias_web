@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UniversityModel } from '../..';
 
 const API_SUBJECTS_URL = `http://localhost:3000/subject`;
 
@@ -15,8 +16,11 @@ export class SubjectsHttpService {
 
 
   // public methods
-  getUniversities(): Observable<any> {
-    return this.http.get<any>(`${API_SUBJECTS_URL}/universities`, {});
+   getUniversities(): Observable<UniversityModel[]> {
+    console.log('dentro');
+    let v =  this.http.get<UniversityModel[]>(`${API_SUBJECTS_URL}/universities`, {});
+    console.log(v);
+    return v;
   }
 
 }

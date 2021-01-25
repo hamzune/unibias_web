@@ -84,7 +84,7 @@ export class TopbarComponent implements OnInit, AfterViewInit {
         this.extrasNotificationsLayout === 'offcanvas'
       ) {
         // Init Quick Notifications Offcanvas Panel
-        KTLayoutQuickNotifications.init('kt_quick_notifications');
+        // KTLayoutQuickNotifications.init('kt_quick_notifications');
       }
 
       if (
@@ -105,10 +105,10 @@ export class TopbarComponent implements OnInit, AfterViewInit {
         KTLayoutQuickPanel.init('kt_quick_panel');
       }
 
-      if (this.extrasUserDisplay && this.extrasUserLayout === 'offcanvas') {
-        // Init Quick User Panel
-        KTLayoutQuickUser.init('kt_quick_user');
-      }
+      // if (this.extrasUserDisplay && this.extrasUserLayout === 'offcanvas') {
+      //   // Init Quick User Panel
+      //   KTLayoutQuickUser.init('kt_quick_user');
+      // }
     });
   }
 }

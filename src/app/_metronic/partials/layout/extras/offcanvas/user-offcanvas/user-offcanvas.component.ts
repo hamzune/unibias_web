@@ -16,9 +16,9 @@ export class UserOffcanvasComponent implements OnInit {
   constructor(private layout: LayoutService, private auth: AuthService) {}
 
   ngOnInit(): void {
-    this.extrasUserOffcanvasDirection = `offcanvas-${this.layout.getProp(
-      'extras.user.offcanvas.direction'
-    )}`;
+    // this.extrasUserOffcanvasDirection = `offcanvas-${this.layout.getProp(
+    //   'extras.user.offcanvas.direction'
+    // )}`;
     this.user$ = this.auth.currentUserSubject.asObservable();
   }
 

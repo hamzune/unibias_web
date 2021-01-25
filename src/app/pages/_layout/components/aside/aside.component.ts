@@ -15,10 +15,10 @@ export class AsideComponent implements OnInit {
     'calendar',
     'settings',
     'logout'];
-  
-  secondBArTabs: string[] = [
+
+  hideInfoBar: string[] = [
     'calendar',
-    ];
+  ];
 
   activeTabId;
   disableAsideSelfDisplay: boolean;
@@ -32,20 +32,24 @@ export class AsideComponent implements OnInit {
   asideSelfMinimizeToggle;
 
 
-  constructor(private layout: LayoutService, private cdr: ChangeDetectorRef,private auth: AuthService,private route: ActivatedRoute) { }
+  constructor(private layout: LayoutService, private cdr: ChangeDetectorRef, private auth: AuthService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    document.body.classList.add('aside-minimize');
+    // document.body.classList.add('aside-minimize');
+
     var tab = this.route.snapshot.firstChild.routeConfig.path
 
-    if(this.secondBArTabs.includes(tab)){
-      if(document.body.classList.contains('aside-minimize')){
-        document.body.classList.remove('aside-minimize');
-      }
-    }else{
-      if(!document.body.classList.contains('aside-minimize')){
-        document.body.classList.add('aside-minimize');
-      }
+    if (this.hideInfoBar.includes(tab)) {
+      // if (document.body.classList.contains('aside-minimize')) {
+      //   document.body.classList.remove('aside-minimize');
+      // }
+      document.body.getElementsByClassName('container-infobar')[0].classList.add('hidden');
+    } else {
+      // if (!document.body.classList.contains('aside-minimize')) {
+      //   document.body.classList.add('aside-minimize');
+      // }
+      document.body.getElementsByClassName('container-infobar')[0].classList.remove('hidden');
+
     }
     this.activeTabId = tab || 'dashboard';
     // load view settings
@@ -62,19 +66,22 @@ export class AsideComponent implements OnInit {
     this.asideMenuScroll = this.layout.getProp('aside.menu.scroll') ? 1 : 0;
     this.asideMenuCSSClasses = `${this.asideMenuCSSClasses} ${this.asideMenuScroll === 1 ? 'scroll my-4 ps ps--active-y' : ''}`;
     this.disableAsideSecondaryDisplay = this.layout.getProp('aside.secondary.display');
-    
+
   }
 
 
   setTab(id) {
-    if(this.secondBArTabs.includes(id)){
-      if(document.body.classList.contains('aside-minimize')){
-        document.body.classList.remove('aside-minimize');
-      }
-    }else{
-      if(!document.body.classList.contains('aside-minimize')){
-        document.body.classList.add('aside-minimize');
-      }
+    if (this.hideInfoBar.includes(id)) {
+      // if (document.body.classList.contains('aside-minimize')) {
+      //   document.body.classList.remove('aside-minimize');
+      // }
+      document.body.getElementsByClassName('container-infobar')[0].classList.add('hidden');
+    } else {
+      // if (!document.body.classList.contains('aside-minimize')) {
+      //   document.body.classList.add('aside-minimize');
+      // }
+      document.body.getElementsByClassName('container-infobar')[0].classList.remove('hidden');
+
     }
     this.activeTabId = id;
     const asideWorkspace = KTUtil.find(

@@ -5,12 +5,10 @@ import { DashboardComponent } from './dashboard.component';
 // import { DashboardsModule } from '../../_metronic/partials/content/dashboards/dashboards.module';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { InlineSVGModule } from 'ng-inline-svg';
-import { InfobarComponent } from './components/infobar/infobar.component';
-import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, InfobarComponent, ProfileComponent],
+  declarations: [DashboardComponent],
   imports: [
     CommonModule,
     NgApexchartsModule,
@@ -22,7 +20,6 @@ import { ProfileComponent } from './components/profile/profile.component';
       },
     ]),
     // DashboardsModule,
-  ],
-  exports: [InfobarComponent],
+  ]
 })
 export class DashboardModule {}

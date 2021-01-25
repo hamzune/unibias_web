@@ -23,6 +23,7 @@ import { SplashScreenModule } from './_metronic/partials/layout/splash-screen/sp
 import { FakeAPIService } from './_fake/fake-api.service';
 // #fake-end#
 
+
 function appInitializer(authService: AuthService) {
   return () => {
     return new Promise((resolve) => {

@@ -7,6 +7,10 @@ import {
 } from '@angular/core';
 import { LayoutService, LayoutInitService } from '../../_metronic/core';
 import KTLayoutContent from '../../../assets/js/layout/base/content';
+import KTLayoutQuickUser from '../../../assets/js/layout/extended/quick-user';
+import KTLayoutQuickNotifications from '../../../assets/js/layout/extended/quick-notifications';
+import { KTUtil } from '../../../assets/js/components/util';
+
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
@@ -102,8 +106,8 @@ export class LayoutComponent implements OnInit, AfterViewInit {
       'extras.scrolltop.display'
     );
   }
-  hideinfobar(){
-    this.infobar =false;
+  hideinfobar() {
+    this.infobar = false;
   }
   ngAfterViewInit(): void {
     if (this.ktAside) {
@@ -137,5 +141,13 @@ export class LayoutComponent implements OnInit, AfterViewInit {
     }
     // Init Content
     KTLayoutContent.init('kt_content');
+    KTUtil.ready(() => {
+
+      KTLayoutQuickUser.init('kt_quick_user');
+  
+    })
+
   }
 }
+
+

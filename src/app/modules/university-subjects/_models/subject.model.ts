@@ -12,7 +12,7 @@ export class SubjectModel {
     name: string;
     description: string;
   
-    setUser(subject: any) {
+    setSubject(subject: any) {
       this.id_subject = subject.id_subject;
       this.id_university = subject.id_university;
       this.id_channel = subject.id_channel;
@@ -26,4 +26,23 @@ export class SubjectModel {
       this.description = subject.description || '';
     }
   }
+  export class Select2SubjectModel {
+    id : number;
+    text : string;
+
+    setCenter(subject : any){
+      this.id = parseInt(subject.code,10);
+      this.text = subject.name;
+    }
+  }
   
+
+  export class CenterModel {
+    code : string;
+    name : string;
+
+    setCenter(center : any){
+      this.code = center.code;
+      this.name = center.name;
+    }
+  }

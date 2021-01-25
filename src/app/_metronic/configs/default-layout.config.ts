@@ -136,22 +136,22 @@ export const DefaultLayoutConfig = {
   extras: {
     // Search
     search: {
-      display: false,
+      display: true,
       layout: 'offcanvas', // offcanvas, dropdown,
       offcanvas: {
-        direction: 'left',
+        direction: 'right',
       },
     },
 
     // Notifications
     notifications: {
-      display: false,
+      display: true,
       layout: 'offcanvas', // offcanvas, dropdown,
       dropdown: {
-        style: 'dark', // light|dark
+        style: 'light', // light|dark
       },
       offcanvas: {
-        direction: 'left',
+        direction: 'right',
       },
     },
 
@@ -175,18 +175,18 @@ export const DefaultLayoutConfig = {
         style: 'dark', // light|dark
       },
       offcanvas: {
-        direction: 'left',
+        direction: 'right',
       },
     },
 
     // Languages
     languages: {
-      display: false,
+      display: true,
     },
 
     // Cart
     cart: {
-      display: false,
+      display: true,
       layout: 'offcanvas', // offcanvas, dropdown,
       offcanvas: {
         direction: 'left',

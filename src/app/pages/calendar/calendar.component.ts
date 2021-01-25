@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { CalendarOptions, DateSelectArg, EventClickArg, EventApi} from '@fullcalendar/angular'; 
-import { INITIAL_EVENTS, createEventId } from './event-utils';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { CalendarOptions, DateSelectArg, EventClickArg, EventApi } from '@fullcalendar/angular';
+import { BaseService } from 'src/app/modules/base';
+import { AuthService, UserModel } from 'src/app/modules/auth';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.scss']
+  styleUrls: ['./calendar.component.scss'],
 })
 export class CalendarComponent implements OnInit {
 
- 
+
   calendarVisible = true;
   calendarOptions: CalendarOptions = {
     headerToolbar: {
@@ -17,14 +18,20 @@ export class CalendarComponent implements OnInit {
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
     },
-    // themeSystem: 'bootstrap',
-    initialView: 'dayGridMonth',
-    initialEvents: INITIAL_EVENTS, // alternatively, use the `events` setting to fetch from a feed
-    weekends: true,
+    initialView: 'timeGridWeek',
+    initialEvents: '', // alternatively, use the `events` setting to fetch from a feed
+    weekends: false,
     editable: true,
     selectable: true,
     selectMirror: true,
     dayMaxEvents: true,
+    lazyFetching: false,
+    firstDay: 1,
+    nowIndicator: true,
+    locale: 'es',
+    businessHours: false,
+    // loading: (isloading:true)=>{alert('loading')},
+    // locales: [esLocale],
     select: this.handleDateSelect.bind(this),
     eventClick: this.handleEventClick.bind(this),
     eventsSet: this.handleEvents.bind(this)
@@ -37,9 +44,12 @@ export class CalendarComponent implements OnInit {
 
   currentEvents: EventApi[] = [];
 
-  constructor() {}
+  constructor(private auth: AuthService) {
+    this.calendarOptions.initialEvents = `http://localhost:3000/${this.auth.currentUserValue.uuid}/calendarevents`
+  }
 
   ngOnInit(): void {
+
   }
 
 
@@ -60,11 +70,12 @@ export class CalendarComponent implements OnInit {
 
     if (title) {
       calendarApi.addEvent({
-        id: createEventId(),
+        id: '23',
         title,
         start: selectInfo.startStr,
         end: selectInfo.endStr,
-        allDay: selectInfo.allDay
+        allDay: selectInfo.allDay,
+        
       });
     }
   }

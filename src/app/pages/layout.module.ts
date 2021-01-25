@@ -12,6 +12,8 @@ import { LayoutComponent } from './_layout/layout.component';
 import { ScriptsInitComponent } from './_layout/init/scipts-init/scripts-init.component';
 import { HeaderMobileComponent } from './_layout/components/header-mobile/header-mobile.component';
 import { AsideComponent } from './_layout/components/aside/aside.component';
+import { InfobarComponent } from './_layout/components/infobar/infobar.component';
+
 import { AsideStaticComponent } from './_layout/components/aside/aside-static/aside-static.component';
 import { AsideDynamicComponent } from './_layout/components/aside/aside-dynamic/aside-dynamic.component';
 import { AsideSearchComponent } from './_layout/components/aside/aside-search/aside-search.component';
@@ -32,6 +34,7 @@ import { DropdownMenusModule } from '../_metronic/partials/content/dropdown-menu
     ScriptsInitComponent,
     HeaderMobileComponent,
     AsideComponent,
+    InfobarComponent,
     FooterComponent,
     HeaderComponent,
     HeaderMenuComponent,

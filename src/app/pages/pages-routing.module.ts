@@ -22,12 +22,16 @@ const routes: Routes = [
         loadChildren: () =>
           import('./builder/builder.module').then((m) => m.BuilderModule),
       },
-      { 
-        path: 'settings', 
-        loadChildren: () => 
-          import('./settings/settings.module').then(m => m.SettingsModule) 
+      {
+        path: 'settings',
+        loadChildren: () =>
+          import('./settings/settings.module').then(m => m.SettingsModule)
       },
-
+      {
+        path: 'user-profile',
+        loadChildren: () =>
+          import('../modules/user-profile/user-profile.module').then((m) => m.UserProfileModule),
+      },
       // {
       //   path: 'ecommerce',
       //   loadChildren: () =>
@@ -42,13 +46,7 @@ const routes: Routes = [
       //       (m) => m.UserManagementModule
       //     ),
       // },
-      // {
-      //   path: 'user-profile',
-      //   loadChildren: () =>
-      //     import('../modules/user-profile/user-profile.module').then(
-      //       (m) => m.UserProfileModule
-      //     ),
-      // },
+
       // {
       //   path: 'ngbootstrap',
       //   loadChildren: () =>

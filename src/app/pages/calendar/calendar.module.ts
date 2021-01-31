@@ -7,7 +7,8 @@ import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
 import interactionPlugin from '@fullcalendar/interaction'; // a plugin
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
-
+import { SchedulerComponent } from './components/scheduler/scheduler.component';
+import { AppointmentsComponent } from './components/appointments/appointments.component';
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -18,7 +19,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 ]);
 
 @NgModule({
-  declarations: [CalendarComponent],
+  declarations: [CalendarComponent, SchedulerComponent, AppointmentsComponent],
   imports: [
     CommonModule,
     FullCalendarModule ,

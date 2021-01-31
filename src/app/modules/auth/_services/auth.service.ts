@@ -76,6 +76,7 @@ export class AuthService implements OnDestroy {
     return this.authHttpService.getUserByToken(auth.accessToken).pipe(
       map((user: UserModel) => {
         if (user) {
+          console.log(user)
           this.currentUserSubject = new BehaviorSubject<UserModel>(user);
         } else {
           this.logout();

@@ -12,14 +12,27 @@
     top: 0px;
     -ms-overflow-style: none;  
     scrollbar-width: none;
-    transition: 0.4s;
 }
 .hidden{
     opacity: 0;
-    width: 0px;
+    position: fixed;
+    right:-375
 }
 
 .container::-webkit-scrollbar {
     display: none;
+}
+
+.separator{
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+#chart {
+    padding: 0;
+    max-width: 80%;
+    margin: 35px auto;
   }
 
+  .symbol {
+    border-radius: 15px;
+}

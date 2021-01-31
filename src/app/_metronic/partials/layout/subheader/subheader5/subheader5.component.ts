@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { BreadcrumbItemModel } from '../_models/breadcrumb-item.model';
 import { SubheaderService } from '../_services/subheader.service';
 import { LayoutService } from '../../../../core';
+import { AuthService, UserModel } from './../../../../../../app/modules/auth';
 
 @Component({
   selector: 'app-subheader5',
@@ -17,14 +18,18 @@ export class Subheader5Component implements OnInit {
   title$: Observable<string>;
   breadcrumbs$: Observable<BreadcrumbItemModel[]>;
   description$: Observable<string>;
+  user$: Observable<UserModel>;
 
   constructor(
     private layout: LayoutService,
-    private subheader: SubheaderService
+    private subheader: SubheaderService,
+    public userService: AuthService
   ) {
     this.title$ = this.subheader.titleSubject.asObservable();
     this.breadcrumbs$ = this.subheader.breadCrumbsSubject.asObservable();
     this.description$ = this.subheader.descriptionSubject.asObservable();
+    this.user$ = this.userService.currentUserSubject.asObservable();
+
   }
 
   ngOnInit() {

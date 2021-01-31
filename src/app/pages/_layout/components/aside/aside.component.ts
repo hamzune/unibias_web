@@ -14,10 +14,12 @@ export class AsideComponent implements OnInit {
     'dashboard',
     'calendar',
     'settings',
+    'user-profile',
     'logout'];
 
   hideInfoBar: string[] = [
     'calendar',
+    'user-profile',
   ];
 
   activeTabId;

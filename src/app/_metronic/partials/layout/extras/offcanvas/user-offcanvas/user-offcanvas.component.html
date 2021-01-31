@@ -10,33 +10,33 @@
     <div class="navi navi-icon-circle navi-spacer-x-0">
 
       <ng-container *ngIf="user$ | async as _user">
-        <!--end::Header-->
-        <div class="mx-auto mt-2" style="width: max-content;">
-          <div class="symbol symbol-100 ">
-            <div class="symbol-label"
-              style="background-image: url('./assets/media/users/300_21.jpg');border-radius: 30px;">
+        <!--begin::Header-->
+        <div>
+          <div class="mx-auto mt-2" style="width: max-content;">
+            <div class="symbol symbol-100 ">
+              <div class="symbol-label"
+                style="background-image: url('{{_user.pic}}');border-radius: 30px;">
+              </div>
+              <i class="symbol-badge bg-success status"></i>
             </div>
-            <i class="symbol-badge bg-success status"></i>
           </div>
+          <div class="text-center text-capitalize text-white pt-5">
+            <h2><b>{{ _user.fullname }}</b> </h2>
+
+            <p>Student</p>
+
+
+            <a class="btn btn-lg btn-light-primary font-weight-bolder py-2 px-5 cursor-pointer" href="/user-profile/personal-information"
+              style="width: 100%;">Edit profile</a>
+
+          </div>
+          <!--begin::Separator-->
+          <div class="separator separator-solid mt-8 mb-5"></div>
+          <!--end::Separator-->
+
         </div>
-        <div class="text-center text-capitalize text-white pt-5">
-          <h2>{{ _user.fullname }} </h2>
-
-          <p>Student</p>
-
-
-          <a class="btn btn-lg btn-light-primary font-weight-bolder py-2 px-5 cursor-pointer" href="#">Edit profile</a>
-
-        </div>
+        <!--end::Header-->
         <!--begin::Content-->
-
-
-
-        <!--begin::Separator-->
-        <div class="separator separator-solid mt-8 mb-5"></div>
-        <!--end::Separator-->
-
-
         <!--begin::Item-->
         <a class="navi-item cursor-pointer" href="/#">
           <div class="navi-link">
@@ -44,15 +44,36 @@
               <div class="symbol-label bg-transparent">
                 <span [inlineSVG]="
                           './assets/media/svg/icons/Map/Marker1.svg'
-                        " cacheSVG="true" class="svg-icon svg-icon-md svg-icon-success" style="color: white;"></span>
+                        " cacheSVG="true" class="svg-icon svg-icon-md svg-icon-light"></span>
               </div>
             </div>
             <div class="navi-text">
               <div class="font-weight-bold text-light text-uppercase">
-                Location
+                <b>Location</b>
               </div>
               <div class="text-light">
-                Barcelona
+                <b>Barcelona</b>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!--end:Item-->
+        <!--begin::Item-->
+        <a class="navi-item cursor-pointer">
+          <div class="navi-link">
+            <div class="symbol symbol-40 mr-3" style="background: rgba(255, 255, 255, 0.2) !important;">
+              <div class="symbol-label bg-transparent">
+                <span [inlineSVG]="
+                './assets/media/svg/icons/Home/Clock.svg'
+              " cacheSVG="true" class="svg-icon svg-icon-md svg-icon-light"></span>
+              </div>
+            </div>
+            <div class="navi-text">
+              <div class="font-weight-bold text-light text-uppercase">
+                <b> local time</b>
+              </div>
+              <div class="text-light">
+                <b> 04:02 PM </b>
               </div>
             </div>
           </div>
@@ -64,70 +85,112 @@
           <div class="navi-link">
             <div class="symbol symbol-40 mr-3" style="background: rgba(255, 255, 255, 0.2) !important;">
               <div class="symbol-label bg-transparent">
-
+                <span [inlineSVG]="
+                './assets/media/svg/icons/Communication/Mail.svg'
+              " cacheSVG="true" class="svg-icon svg-icon-md svg-icon-light"></span>
               </div>
             </div>
             <div class="navi-text">
               <div class="font-weight-bold text-light text-uppercase">
-                Email
+                <b>Email</b>
               </div>
               <div class="text-light">
-                {{_user.email}}
+                <b>{{_user.email}}</b>
               </div>
             </div>
           </div>
         </a>
         <!--end:Item-->
 
+      </ng-container>
 
-        <!--begin::Item-->
-        <a class="navi-item cursor-pointer">
-          <div class="navi-link">
-            <div class="symbol symbol-40 bg-light mr-3">
-              <div class="symbol-label">
-                <span [inlineSVG]="
-                    './assets/media/svg/icons/Files/Selected-file.svg'
-                  " cacheSVG="true" class="svg-icon svg-icon-md svg-icon-danger"></span>
-              </div>
-            </div>
-            <div class="navi-text">
-              <div class="font-weight-bold">
-                My Activities
-              </div>
-              <div class="text-muted">
-                Logs and notifications
-              </div>
-            </div>
-          </div>
-        </a>
-        <!--end:Item-->
 
-        <!--begin::Item-->
-        <a class="navi-item cursor-pointer">
-          <div class="navi-link">
-            <div class="symbol symbol-40 bg-light mr-3">
-              <div class="symbol-label">
-                <span [inlineSVG]="
-                    './assets/media/svg/icons/Communication/Mail-opened.svg'
-                  " cacheSVG="true" class="svg-icon svg-icon-md svg-icon-primary"></span>
-              </div>
-            </div>
-            <div class="navi-text">
-              <div class="font-weight-bold">
-                My Tasks
-              </div>
-              <div class="text-muted">
-                latest tasks and projects
-              </div>
-            </div>
-          </div>
-        </a>
-        <!--end:Item-->
+      <!--begin::Channels-->
+      <ng-container>
         <!--begin::Separator-->
         <div class="separator separator-solid my-7"></div>
         <!--end::Separator-->
+
+        <div class=" text-capitalize text-white pt-5">
+          <h2><b>Channels</b></h2>
+        </div>
+
+        <!--begin::Channel-->
+        <a class="navi-item cursor-pointer">
+          <div class="navi-link">
+
+            <div class="navi-text">
+              <div class="font-weight-bold text-light text-capitalize">
+                <b># Machine learning</b>
+              </div>
+            </div>
+
+            <!--begin:Notification-->
+            <div class="symbol symbol-20 mr-3" style="background: #E45851 !important;">
+              <div class="symbol-label bg-transparent text-light">
+                1
+              </div>
+            </div>
+            <!--end:Notification-->
+
+          </div>
+        </a>
+        <!--end:Channel-->
+
+
+        <!--begin::Channel-->
+        <a class="navi-item cursor-pointer">
+          <div class="navi-link">
+
+            <div class="navi-text">
+              <div class="font-weight-bold text-light text-capitalize">
+                <b># Marketing</b>
+              </div>
+            </div>
+
+            <!--begin:Notification-->
+            <!-- <div class="symbol symbol-20 mr-3" style="background: #E45851 !important;">
+            <div class="symbol-label bg-transparent text-light">
+              1
+            </div>
+          </div> -->
+            <!--end:Notification-->
+
+          </div>
+        </a>
+        <!--end:Channel-->
       </ng-container>
 
+      <!--end:Channels-->
+      <!--begin::Channels-->
+      <ng-container>
+        <!--begin::Separator-->
+        <div class="separator separator-solid my-7"></div>
+        <!--end::Separator-->
+        <div class=" text-capitalize text-white pt-5">
+          <h2><b>File Storage Used</b></h2>
+        </div>
+
+        <div class=" text-capitalize text-white pt-5" style="font-size:30px;">
+          <b>23 Gb</b>
+        </div>
+        <div class="d-flex flex-column w-100 mt-11 mb-8" wfd-id="536">
+
+          <div class="d-flex  justify-content-between">
+
+            <span class="d-flex text-light mr-2 font-weight-bold pb-3" wfd-id="539">43% Used</span>
+            <span class="d-flex text-light mr-2 font-size-lg font-weight-bolder pb-3" wfd-id="539">13 Gb Left</span>
+          </div>
+
+          <div class="progress progress-xs w-100" wfd-id="537" style="height: 0.8rem!important;">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 43%;" aria-valuenow="50"
+              aria-valuemin="0" aria-valuemax="100" wfd-id="556"></div>
+          </div>
+
+        </div>
+      </ng-container>
+
+      <!--end:Channels-->
     </div>
     <!--end::Nav-->
   </div>

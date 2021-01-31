@@ -1,62 +1,84 @@
 <!--begin::Subheader-->
-<div class="subheader py-2 py-lg-4" [ngClass]="subheaderCSSClasses" id="kt_subheader"
-  style="max-width: 1100px;margin:auto">
-  <div [ngClass]="subheaderContainerCSSClasses"
-    class="d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-    <!--begin::Details-->
-    <div class="d-flex align-items-center flex-wrap mr-2">
-      <ng-container *ngIf="subheaderMobileToggle">
-        <!--begin::Mobile Toggle-->
-        <button class="burger-icon burger-icon-left mr-4 d-inline-block d-lg-none" id="kt_subheader_mobile_toggle">
-          <span></span>
-        </button>
-        <!--end::Mobile Toggle-->
-      </ng-container>
+<div class="container">
 
-      <!--begin::Search Form-->
-      <div class="d-flex align-items-center" id="kt_subheader_search">
-        <ng-container *ngIf="subheaderDisplayDesc">
-          <ng-container *ngIf="description$ | async as _description">
-            <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">
-              {{ _description }}</span>
-          </ng-container>
+
+  <!-- style="max-width: 1100px;margin:auto" -->
+  <div class="subheader py-2 py-lg-4" [ngClass]="subheaderCSSClasses" id="kt_subheader">
+    <div [ngClass]="subheaderContainerCSSClasses"
+      class="d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap mt-5">
+      <!--begin::Details-->
+      <div class="d-flex align-items-center flex-wrap mr-2">
+        <ng-container *ngIf="subheaderMobileToggle">
+          <!--begin::Mobile Toggle-->
+          <button class="burger-icon burger-icon-left mr-4 d-inline-block d-lg-none" id="kt_subheader_mobile_toggle">
+            <span></span>
+          </button>
+          <!--end::Mobile Toggle-->
         </ng-container>
 
-        <form class="ml-0">
-          <div class="input-group input-group-sm input-group-solid" style=" background-color: #ffffff;">
-            <input type="text" class="form-control" id="kt_subheader_search_form" placeholder="Search..." />
-            <div class="input-group-append">
-              <span class="input-group-text">
-                <span [inlineSVG]="'./assets/media/svg/icons/General/Search.svg'" cacheSVG="true"
-                  class="svg-icon"></span>
-                <!--<i class="flaticon2-search-1 icon-sm"></i>-->
-              </span>
+        <!--begin::Search Form-->
+        <div class="d-flex align-items-center" id="kt_subheader_search">
+          <ng-container *ngIf="subheaderDisplayDesc">
+            <ng-container *ngIf="description$ | async as _description">
+              <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">
+                {{ _description }}</span>
+            </ng-container>
+          </ng-container>
+
+          <form class="ml-0">
+            <div class="input-group input-group-sm input-group-solid" style=" background-color: #ffffff;">
+              <input type="text" class="form-control" id="kt_subheader_search_form" placeholder="Search..." />
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <span [inlineSVG]="'./assets/media/svg/icons/General/Search.svg'" cacheSVG="true"
+                    class="svg-icon"></span>
+                  <!--<i class="flaticon2-search-1 icon-sm"></i>-->
+                </span>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
+        <!--end::Search Form-->
       </div>
-      <!--end::Search Form-->
-    </div>
-    <!--end::Details-->
+      <!--end::Details-->
 
-    <!--begin::Toolbar-->
-    <div class="d-flex align-items-center">
+      <!--begin::Toolbar-->
+      <div class="d-flex align-items-center">
+        <ng-container *ngIf="user$ | async as user">
 
-      <a class="btn btn-icon btn-clean btn-lg w-40px h-40px" id="kt_quick_user_toggle">
-        <span class="symbol symbol-30 symbol-lg-40">
-          <span [inlineSVG]="'./assets/media/svg/icons/General/User.svg'" cacheSVG="true"
-            class="svg-icon svg-icon-xl"></span>
-        </span>
-      </a>
-      <!--begin::Notifications-->
-      <a class="btn btn-icon btn-clean btn-lg mb-1" id="kt_quick_notifications_toggle">
-        <span [inlineSVG]="'./assets/media/svg/icons/Code/Compiling.svg'" cacheSVG="true"
-          class="svg-icon svg-icon-xl"></span>
-        <span class="pulse-ring"></span>
-      </a>
-      <!--end::Notifications-->
+        <a class="btn btn-icon btn-clean btn-lg w-auto h-40px text-dark-50 text-capitalize" id="kt_quick_user_toggle">
+          {{user.firstname}} {{user.lastname}}
+          <span class="symbol symbol-20 symbol-lg-40 ml-1">
+              <div class="symbol-label" style="background-image: url('{{user.pic}}');border-radius: 35%;"></div>
+          </span>
+        </a>
+      </ng-container>
+    
+  
+        <!--begin::Notifications-->
+        <a class="btn btn-icon btn-clean btn-lg w-35px h-40px ml-4" id="kt_quick_notifications_toggle">
+
+          <span class="symbol symbol-20 symbol-lg-40">
+
+            <div class="symbol-label" style="background:#E45851;border-radius: 35%;">
+              <ng-container *ngIf="true; else elseTemplate2">
+                <span class="text-light">1</span>
+              </ng-container>
+              <ng-template #elseTemplate2>
+                <span [inlineSVG]="'./assets/media/svg/icons/General/Notifications1.svg'" cacheSVG="true"
+                class="svg-icon svg-icon-md svg-icon-light"></span>
+              </ng-template>
+              
+            </div>
+          </span>
+
+          <span class="pulse-ring"></span>
+        </a>
+        <!--end::Notifications-->
+      </div>
+      <!--end::Toolbar-->
     </div>
-    <!--end::Toolbar-->
   </div>
+  <!--end::Subheader-->
+
 </div>
-<!--end::Subheader-->

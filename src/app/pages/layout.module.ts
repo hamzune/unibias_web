@@ -27,7 +27,7 @@ import { CoreModule } from '../_metronic/core';
 import { SubheaderModule } from '../_metronic/partials/layout/subheader/subheader.module';
 import { HeaderMenuDynamicComponent } from './_layout/components/header/header-menu-dynamic/header-menu-dynamic.component';
 import { DropdownMenusModule } from '../_metronic/partials/content/dropdown-menus/dropdown-menus.module';
-
+import { NgApexchartsModule } from "ng-apexcharts";
 @NgModule({
   declarations: [
     LayoutComponent,
@@ -57,6 +57,7 @@ import { DropdownMenusModule } from '../_metronic/partials/content/dropdown-menu
     CoreModule,
     SubheaderModule,
     DropdownMenusModule,
+    NgApexchartsModule,
   ],
 })
 export class LayoutModule { }

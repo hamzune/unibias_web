@@ -6,15 +6,19 @@
 
 .separator{
     border-color: rgba(255, 255, 255, 0.2);
-    width: 80%;
-    margin: auto;
 }
 
 .status{
-    background-color: #28a745 !important;
+    // background-color: #28a745 !important;
     height: 35px !important;
     width: 35px!important;
     top: -10px!important;
     border: 5px solid #3e6bec!important;
     right: -1px!important;
+}
+
+.navi-item{
+    margin-top: 12px;
+    margin-bottom: 12px;
+
 }

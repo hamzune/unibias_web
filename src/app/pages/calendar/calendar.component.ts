@@ -16,11 +16,11 @@ export class CalendarComponent implements OnInit {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+      right: 'dayGridMonth,timeGridWeek'
     },
     initialView: 'timeGridWeek',
     initialEvents: '', // alternatively, use the `events` setting to fetch from a feed
-    weekends: false,
+    weekends: true,
     editable: true,
     selectable: true,
     selectMirror: true,
@@ -30,6 +30,10 @@ export class CalendarComponent implements OnInit {
     nowIndicator: true,
     locale: 'es',
     businessHours: false,
+    slotDuration:"00:15:00",
+    scrollTime : "08:00:00",
+    
+    // slotMinTime:1000,
     // loading: (isloading:true)=>{alert('loading')},
     // locales: [esLocale],
     select: this.handleDateSelect.bind(this),
@@ -72,6 +76,7 @@ export class CalendarComponent implements OnInit {
       calendarApi.addEvent({
         id: '23',
         title,
+        description:  'dasdasdasdadaadsasd',
         start: selectInfo.startStr,
         end: selectInfo.endStr,
         allDay: selectInfo.allDay,

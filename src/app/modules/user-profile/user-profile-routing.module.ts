@@ -7,6 +7,7 @@ import { PersonalInformationComponent } from './personal-information/personal-in
 import { ProfileOverviewComponent } from './profile-overview/profile-overview.component';
 import { SavedCreditCardsComponent } from './saved-credit-cards/saved-credit-cards.component';
 import { StatementsComponent } from './statements/statements.component';
+import { SubjectsSettingsComponent } from './subjects-settings/subjects-settings.component';
 import { TaxInformationComponent } from './tax-information/tax-information.component';
 import { UserProfileComponent } from './user-profile.component';
 
@@ -15,10 +16,10 @@ const routes: Routes = [
     path: '',
     component: UserProfileComponent,
     children: [
-      // {
-      //   path: 'profile-overview',
-      //   component: ProfileOverviewComponent,
-      // },
+      {
+        path: 'subjects-settings',
+        component: SubjectsSettingsComponent,
+      },
       {
         path: 'personal-information',
         component: PersonalInformationComponent,

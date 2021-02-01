@@ -15,6 +15,7 @@ import { Options } from 'select2';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SubscribeSubjectsComponent implements OnInit, OnDestroy {
+
   public subjects: Array<Select2OptionData> = [];
   private unsubscribe: Subscription[] = [];
   options: Options;
@@ -47,6 +48,7 @@ export class SubscribeSubjectsComponent implements OnInit, OnDestroy {
     const subs = this.subjectHttpService.getUniversities().subscribe((value) => {
       this.universities = value;
       this.cdr.detectChanges();
+      console.log(this.universities);
     })
     this.unsubscribe.push(subs);
 

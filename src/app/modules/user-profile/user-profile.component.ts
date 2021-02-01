@@ -10,6 +10,7 @@ export class UserProfileComponent implements OnInit {
   constructor(private subheader: SubheaderService) { }
 
   ngOnInit(): void {
+    document.body.getElementsByClassName('container-infobar')[0].classList.add('hidden');
     setTimeout(() => {
       this.subheader.setTitle('User Profile');
       this.subheader.setBreadcrumbs([{

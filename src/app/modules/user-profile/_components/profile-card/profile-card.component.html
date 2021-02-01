@@ -31,8 +31,7 @@
           {{user.occupation}}
         </div>
         <div class="mt-2">
-          <a class="btn btn-sm btn-primary font-weight-bold mr-2 py-2 px-3 px-xxl-5 my-1 cursor-pointer">Chat</a>
-          <a class="btn btn-sm btn-success font-weight-bold py-2 px-3 px-xxl-5 my-1 cursor-pointer">Follow</a>
+          <a class="btn btn-sm btn-outline-danger font-weight-bold mr-2 py-2 px-3 px-xxl-5 my-1 cursor-pointer">Disable Account</a>
         </div>
       </div>
     </div>
@@ -96,9 +95,23 @@
           <span class="navi-text font-size-lg">
             Change Password
           </span>
-          <span class="navi-label">
+          <!-- <span class="navi-label">
             <span class="label label-light-danger label-rounded font-weight-bold">5</span>
+          </span> -->
+        </a>
+      </div>
+      <div class="navi-item mb-2">
+        <a class="navi-link py-4" routerLink="/user-profile/subjects-settings" routerLinkActive="active">
+          <span class="navi-icon mr-2">
+            <span [inlineSVG]="'./assets/media/svg/icons/Home/Library.svg'" cacheSVG="true"
+              class="svg-icon"></span>
           </span>
+          <span class="navi-text font-size-lg">
+            Subjects settings
+          </span>
+          <span class="navi-label">
+            <span class="label label-light-danger label-rounded font-weight-bold">4</span>
+          </span> 
         </a>
       </div>
       <div class="navi-item mb-2">

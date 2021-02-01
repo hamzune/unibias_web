@@ -3,6 +3,7 @@ import { LayoutService } from '../../../../../core';
 import { Observable } from 'rxjs';
 import { UserModel } from '../../../../../../modules/auth/_models/user.model';
 import { AuthService } from '../../../../../../modules/auth/_services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-offcanvas',
@@ -13,7 +14,7 @@ export class UserOffcanvasComponent implements OnInit {
   extrasUserOffcanvasDirection = 'offcanvas-right';
   user$: Observable<UserModel>;
 
-  constructor(private layout: LayoutService, private auth: AuthService) {}
+  constructor(private layout: LayoutService, private auth: AuthService, private router : Router) {}
 
   ngOnInit(): void {
     // this.extrasUserOffcanvasDirection = `offcanvas-${this.layout.getProp(
@@ -25,5 +26,9 @@ export class UserOffcanvasComponent implements OnInit {
   logout() {
     this.auth.logout();
     document.location.reload();
+  }
+
+  goToEditProfile(){
+    this.router.navigateByUrl('/user-profile/personal-information');
   }
 }

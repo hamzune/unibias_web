@@ -21,13 +21,15 @@ export class InfobarComponent implements OnInit {
   public chartOptions: Partial<ChartOptions>;
   constructor() { 
     this.chartOptions = {
-      series: [40, 30, 20, 10],
+      series: [5, 15, 30, 55],
       chart: {
         height: 330,
         type: "radialBar"
       },
       plotOptions: {
+        
         radialBar: {
+          inverseOrder: true,
           track : {
             opacity : 0.5,
             strokeWidth : '20px',
@@ -51,7 +53,7 @@ export class InfobarComponent implements OnInit {
           }
         }
       },
-      labels: ["18-20", "21-23", "23-25", " 26-100"]
+      labels: ["UB", "UAB", "UPC", " UPF"]
     };
 
   }

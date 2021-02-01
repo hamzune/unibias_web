@@ -13,7 +13,6 @@ export class AsideComponent implements OnInit {
   TABS: string[] = [
     'dashboard',
     'calendar',
-    'settings',
     'user-profile',
     'logout'];
 

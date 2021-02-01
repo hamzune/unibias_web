@@ -31,21 +31,11 @@
         </a>
       </li>
       <!--end::Item-->
-      <!--begin::Item-->
-      <li class="nav-item mb-6" placement="right" ngbTooltip="Settings" container="body">
-        <a class="nav-link btn btn-icon btn-clean btn-lg" [ngClass]="{ active: activeTabId === TABS[2] }"
-          (click)="setTab(TABS[2])" routerLink="/settings" data-toggle="tab" data-target="#kt_aside_tab_2" role="tab">
-          <span [inlineSVG]="'./assets/media/svg/icons/General/Settings-2.svg'" cacheSVG="true"
-            class="svg-icon svg-icon-2x"></span>
-
-        </a>
-      </li>
-      <!--end::Item-->
-
+     
        <!--begin::Item-->
        <li class="nav-item mb-6" placement="right" ngbTooltip="Settings" container="body">
-        <a class="nav-link btn btn-icon btn-clean btn-lg" [ngClass]="{ active: activeTabId === TABS[3] }"
-          (click)="setTab(TABS[3])" routerLink="/user-profile" data-toggle="tab" data-target="#kt_aside_tab_2" role="tab">
+        <a class="nav-link btn btn-icon btn-clean btn-lg" [ngClass]="{ active: activeTabId === TABS[2] }"
+          (click)="setTab(TABS[2])" routerLink="/user-profile" data-toggle="tab" data-target="#kt_aside_tab_2" role="tab">
           <span [inlineSVG]="'./assets/media/svg/icons/General/Settings-2.svg'" cacheSVG="true"
             class="svg-icon svg-icon-2x"></span>
 

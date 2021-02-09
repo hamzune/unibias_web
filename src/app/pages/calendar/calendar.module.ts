@@ -9,6 +9,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import { SchedulerComponent } from './components/scheduler/scheduler.component';
 import { AppointmentsComponent } from './components/appointments/appointments.component';
+import { ExtrasModule } from '../../_metronic/partials/layout/extras/extras.module';
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -22,6 +23,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   declarations: [CalendarComponent, SchedulerComponent, AppointmentsComponent],
   imports: [
     CommonModule,
+    ExtrasModule,
     FullCalendarModule ,
     RouterModule.forChild([
       {

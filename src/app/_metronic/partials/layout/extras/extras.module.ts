@@ -20,6 +20,8 @@ import { UserOffcanvasComponent } from './offcanvas/user-offcanvas/user-offcanva
 import { CoreModule } from '../../../core';
 import { ScrollTopComponent } from './scroll-top/scroll-top.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { DropdownMenusModule } from '../../../../_metronic/partials/content/dropdown-menus/dropdown-menus.module';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -42,7 +44,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ScrollTopComponent,
     ToolbarComponent,
   ],
-  imports: [CommonModule, InlineSVGModule, PerfectScrollbarModule, CoreModule, RouterModule],
+  imports: [CommonModule, InlineSVGModule, PerfectScrollbarModule, CoreModule, RouterModule,NgbDropdownModule,NgbTooltipModule,DropdownMenusModule],
   providers: [
     {
       provide: PERFECT_SCROLLBAR_CONFIG,

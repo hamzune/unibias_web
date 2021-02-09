@@ -48,7 +48,7 @@
 
         <a class="btn btn-icon btn-clean btn-lg w-auto h-40px text-dark-50 text-capitalize" id="kt_quick_user_toggle">
           {{user.firstname}} {{user.lastname}}
-          <span class="symbol symbol-20 symbol-lg-40 ml-1">
+          <span class="symbol symbol-40 symbol-lg-40 ml-1">
               <div class="symbol-label" style="background-image: url('{{user.pic}}');border-radius: 35%;"></div>
           </span>
         </a>
@@ -58,10 +58,10 @@
         <!--begin::Notifications-->
         <a class="btn btn-icon btn-clean btn-lg w-35px h-40px ml-4" id="kt_quick_notifications_toggle">
 
-          <span class="symbol symbol-20 symbol-lg-40">
+          <span class="symbol symbol-40 symbol-lg-40">
 
             <div class="symbol-label" style="background:#E45851;border-radius: 35%;">
-              <ng-container *ngIf="true; else elseTemplate2">
+              <ng-container *ngIf="false; else elseTemplate2">
                 <span class="text-light">1</span>
               </ng-container>
               <ng-template #elseTemplate2>

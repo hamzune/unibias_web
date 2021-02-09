@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UniversityModel } from '../..';
-import { CenterModel, SubjectModel } from '../../_models/subject.model';
+import { CenterModel, SubjectModel,SubscribedSubjectModel } from '../../_models/subject.model';
 import { AuthService, UserModel } from 'src/app/modules/auth';
+import { environment } from 'src/environments/environment';
 
-const API_SUBJECTS_URL = `http://localhost:3000/subject`;
+const API_SUBJECTS_URL = `${environment.apiUrl}/subject`;
 
 
 @Injectable({
@@ -52,4 +53,17 @@ export class SubjectsHttpService {
     });
   }
 
+  unSubscribe(id_subject){
+    let uuid = this.uuid
+    return this.http.delete<SubscribedSubjectModel[]>(`${API_SUBJECTS_URL}/unsubscribe`, { 
+      params : {
+        uuid : uuid,
+        subjectId : id_subject
+      } 
+    });
+  }
+
+  getSubscribedSubjects(){
+    return this.http.get<SubscribedSubjectModel[]>(`${environment.apiUrl}/${this.uuid}/subjects`, {});
+  }
 }

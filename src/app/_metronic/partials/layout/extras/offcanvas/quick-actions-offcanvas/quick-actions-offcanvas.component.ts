@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { LayoutService } from '../../../../../core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-quick-actions-offcanvas',
@@ -7,12 +6,21 @@ import { LayoutService } from '../../../../../core';
   styleUrls: ['./quick-actions-offcanvas.component.scss'],
 })
 export class QuickActionsOffcanvasComponent implements OnInit {
+
+  @Input()
+  event: any;
+
+
   extrasQuickActionsOffcanvasDirectionCSSClasses = 'offcanvas-right';
-  constructor(private layout: LayoutService) {}
+  constructor() { }
 
   ngOnInit(): void {
-    this.extrasQuickActionsOffcanvasDirectionCSSClasses = `offcanvas-${this.layout.getProp(
-      'extras.quickActions.offcanvas.direction'
-    )}`;
+  }
+  
+  deleteEvent() {
+    if (confirm(`Are you sure you want to delete the event '${this.event.title}'`)) {
+      document.getElementById('kt_quick_actions_close').click();
+      this.event.remove();
+    }
   }
 }

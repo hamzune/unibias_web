@@ -48,9 +48,8 @@ export class SubscribeSubjectsComponent implements OnInit, OnDestroy {
     const subs = this.subjectHttpService.getUniversities().subscribe((value) => {
       this.universities = value;
       this.cdr.detectChanges();
-      console.log(this.universities);
+      subs.unsubscribe();
     })
-    this.unsubscribe.push(subs);
 
     this.options = {
       width: '100%',

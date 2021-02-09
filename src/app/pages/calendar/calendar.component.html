@@ -40,9 +40,14 @@
       </div>
     </div> -->
 
+  <!-- aqui pondre lo de cada evento o materia -->
+  <!-- <app-notifications-offcanvas></app-notifications-offcanvas> -->
+  <a id="kt_quick_actions_toggle"></a>
+  <app-quick-actions-offcanvas [event]="selectedEvent"></app-quick-actions-offcanvas>
+  <!-- <app-quick-panel-offcanvas [customTitle]="title"></app-quick-panel-offcanvas> -->
 
-    <div class="container">
-      <full-calendar *ngIf='calendarVisible' [options]='calendarOptions'></full-calendar>
-    </div>
+  <div class="container">
+    <full-calendar *ngIf='calendarVisible' [options]='calendarOptions'></full-calendar>
+  </div>
 
 </div>

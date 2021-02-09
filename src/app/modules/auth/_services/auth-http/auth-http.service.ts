@@ -5,7 +5,7 @@ import { UserModel } from '../../_models/user.model';
 import { environment } from '../../../../../environments/environment';
 import { AuthModel } from '../../_models/auth.model';
 
-const API_USERS_URL = `http://localhost:3000/user`;
+const API_USERS_URL = `${environment.apiUrl}/user`;
 
 @Injectable({
   providedIn: 'root',

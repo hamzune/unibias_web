@@ -73,34 +73,38 @@ export class LayoutComponent implements OnInit, AfterViewInit {
     this.headerCSSClasses = this.layout.getStringCSSClasses('header');
     this.headerHTMLAttributes = this.layout.getHTMLAttributes('header');
     // offcanvases
-    if (this.layout.getProp('extras.search.display')) {
-      this.extrasSearchOffcanvasDisplay =
-        this.layout.getProp('extras.search.layout') === 'offcanvas';
-    }
+    // if (this.layout.getProp('extras.search.display')) {
+    //   this.extrasSearchOffcanvasDisplay =
+    //     this.layout.getProp('extras.search.layout') === 'offcanvas';
+    // }
 
-    if (this.layout.getProp('extras.notifications.display')) {
-      this.extrasNotificationsOffcanvasDisplay =
-        this.layout.getProp('extras.notifications.layout') === 'offcanvas';
-    }
+    // if (this.layout.getProp('extras.notifications.display')) {
+    //   this.extrasNotificationsOffcanvasDisplay =
+    //     this.layout.getProp('extras.notifications.layout') === 'offcanvas';
+    // }
 
-    if (this.layout.getProp('extras.quickActions.display')) {
-      this.extrasQuickActionsOffcanvasDisplay =
-        this.layout.getProp('extras.quickActions.layout') === 'offcanvas';
-    }
+    //Hamza
+    this.extrasNotificationsOffcanvasDisplay = true;
+    this.extrasUserOffcanvasDisplay = true;
+    // this.extrasQuickPanelDisplay = true;
 
-    if (this.layout.getProp('extras.cart.display')) {
-      this.extrasCartOffcanvasDisplay =
-        this.layout.getProp('extras.cart.layout') === 'offcanvas';
-    }
+    
+    // if (this.layout.getProp('extras.quickActions.display')) {
+    //   this.extrasQuickActionsOffcanvasDisplay =
+    //     this.layout.getProp('extras.quickActions.layout') === 'offcanvas';
+    // }
 
-    if (this.layout.getProp('extras.user.display')) {
-      this.extrasUserOffcanvasDisplay =
-        this.layout.getProp('extras.user.layout') === 'offcanvas';
-    }
+    // if (this.layout.getProp('extras.cart.display')) {
+    //   this.extrasCartOffcanvasDisplay =
+    //     this.layout.getProp('extras.cart.layout') === 'offcanvas';
+    // }
 
-    this.extrasQuickPanelDisplay = this.layout.getProp(
-      'extras.quickPanel.display'
-    );
+    // if (this.layout.getProp('extras.user.display')) {
+    //   this.extrasUserOffcanvasDisplay =
+    //     this.layout.getProp('extras.user.layout') === 'offcanvas';
+    // }
+
+
 
     this.extrasScrollTopDisplay = this.layout.getProp(
       'extras.scrolltop.display'
@@ -144,7 +148,7 @@ export class LayoutComponent implements OnInit, AfterViewInit {
     KTUtil.ready(() => {
 
       KTLayoutQuickUser.init('kt_quick_user');
-  
+      KTLayoutQuickNotifications.init('kt_quick_notifications');
     })
 
   }

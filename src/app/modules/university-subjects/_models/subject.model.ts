@@ -26,6 +26,34 @@ export class SubjectModel {
       this.description = subject.description || '';
     }
   }
+
+  export class SubscribedSubjectModel {
+    id_subject: number;
+    name: string;
+    backgroundColor: string;
+    textColor: string;
+    periodo : string;
+    theory : number;
+    seminar : number;
+    practice : number;
+    university : string;
+    plan: string;
+    status : number;
+  
+    setSubject(subject: any) {
+      this.id_subject = subject.id_subject;
+      this.name = subject.name || '';
+      this.backgroundColor = subject.backgroundColor || '';
+      this.textColor = subject.textColor || '';
+      this.periodo = subject.periodo || '';
+      this.theory = subject.theory;
+      this.seminar = subject.seminar;
+      this.practice = subject.practice;
+      this.university = subject.university || '';
+      this.plan = subject.plan || '';
+      this.status = subject.status || '';
+    }
+  }
   export class Select2SubjectModel {
     id : number;
     text : string;

@@ -1,103 +1,58 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
-import { first } from 'rxjs/operators';
-import { AuthService, UserModel } from '../../auth';
+import { AuthService } from '../../auth';
+import { SubscribedSubjectModel } from '../../university-subjects';
+import { SubjectsHttpService } from '../../university-subjects/_services/subjects-http';
 
 @Component({
   selector: 'app-subjects-settings',
   templateUrl: './subjects-settings.component.html',
-  styleUrls: ['./subjects-settings.component.scss']
+  styleUrls: ['./subjects-settings.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SubjectsSettingsComponent implements OnInit {
-  formGroup: FormGroup;
-  user: UserModel;
-  firstUserState: UserModel;
+
   subscriptions: Subscription[] = [];
-  isLoading$: Observable<boolean>;
-  value = '';
-  constructor(private userService: AuthService, private fb: FormBuilder) {
-    this.isLoading$ = this.userService.isLoadingSubject.asObservable();
+  subscribedSubjects: SubscribedSubjectModel[];
+  value = ''
+
+  constructor(private cdr: ChangeDetectorRef, private userService: AuthService, private subjectHttpService: SubjectsHttpService) {
+
   }
 
-  ngOnInit(): void {
-    const sb = this.userService.currentUserSubject.asObservable().pipe(
-      first(user => !!user)
-    ).subscribe(user => {
-      this.user = Object.assign({}, user);
-      this.firstUserState = Object.assign({}, user);
-      this.loadForm();
-    });
-    this.subscriptions.push(sb);
+ ngOnInit(): void {
+    const subs = this.subjectHttpService.getSubscribedSubjects().subscribe(
+      res => {
+        this.subscribedSubjects = res;
+        this.cdr.detectChanges();
+        console.log(this.subscribedSubjects);
+      },
+      err => console.log('HTTP Error', err),
+      () => console.log('HTTP request completed.')
+    )
+    subs.unsubscribe();
   }
+
+
+
+  async unsubscribe(id_subject,name) {
+    if (confirm(`Are you sure you want to unsuscribe from '${name}'`)) {
+      const subs = this.subjectHttpService.unSubscribe(id_subject).subscribe((value) => {
+        for (var i = 0; i < this.subscribedSubjects.length; i++) {
+          if (this.subscribedSubjects[i].id_subject == id_subject){
+            this.subscribedSubjects.splice(i, 1);
+          }
+        }
+        this.cdr.detectChanges();
+        subs.unsubscribe();
+      })
+    }
+  }
+
 
   ngOnDestroy() {
     this.subscriptions.forEach(sb => sb.unsubscribe());
   }
-  
-  goToAdd(){
-    this.value = 'subscribe';
-  }
 
-  loadForm() {
-    this.formGroup = this.fb.group({
-      emailNotification: [this.user.emailSettings.emailNotification],
-      sendCopyToPersonalEmail: [this.user.emailSettings.sendCopyToPersonalEmail],
-      youHaveNewNotifications: [this.user.emailSettings.activityRelatesEmail.youHaveNewNotifications],
-      youAreSentADirectMessage: [this.user.emailSettings.activityRelatesEmail.youAreSentADirectMessage],
-      someoneAddsYouAsAsAConnection: [this.user.emailSettings.activityRelatesEmail.someoneAddsYouAsAsAConnection],
-      uponNewOrder: [this.user.emailSettings.activityRelatesEmail.uponNewOrder],
-      newMembershipApproval: [this.user.emailSettings.activityRelatesEmail.newMembershipApproval],
-      memberRegistration: [this.user.emailSettings.activityRelatesEmail.memberRegistration],
-      newsAboutKeenthemesProductsAndFeatureUpdates:
-        [this.user.emailSettings.updatesFromKeenthemes.newsAboutKeenthemesProductsAndFeatureUpdates],
-      tipsOnGettingMoreOutOfKeen: [this.user.emailSettings.updatesFromKeenthemes.tipsOnGettingMoreOutOfKeen],
-      thingsYouMissedSindeYouLastLoggedIntoKeen: [this.user.emailSettings.updatesFromKeenthemes.thingsYouMissedSindeYouLastLoggedIntoKeen],
-      newsAboutMetronicOnPartnerProductsAndOtherServices:
-        [this.user.emailSettings.updatesFromKeenthemes.newsAboutMetronicOnPartnerProductsAndOtherServices],
-      tipsOnMetronicBusinessProducts: [this.user.emailSettings.updatesFromKeenthemes.tipsOnMetronicBusinessProducts]
-    });
-  }
-
-  save() {
-    this.formGroup.markAllAsTouched();
-    if (!this.formGroup.valid) {
-      return;
-    }
-
-    const formValues = this.formGroup.value;
-    this.user = Object.assign(this.user, {
-      emailSettings: {
-        emailNotification: formValues.emailNotification,
-        sendCopyToPersonalEmail: formValues.sendCopyToPersonalEmail,
-        activityRelatesEmail: {
-          youHaveNewNotifications: formValues.youHaveNewNotifications,
-          youAreSentADirectMessage: formValues.youAreSentADirectMessage,
-          someoneAddsYouAsAsAConnection: formValues.someoneAddsYouAsAsAConnection,
-          uponNewOrder: formValues.uponNewOrder,
-          newMembershipApproval: formValues.newMembershipApproval,
-          memberRegistration: formValues.memberRegistration
-        },
-        updatesFromKeenthemes: {
-          newsAboutKeenthemesProductsAndFeatureUpdates: formValues.newsAboutKeenthemesProductsAndFeatureUpdates,
-          tipsOnGettingMoreOutOfKeen: formValues.tipsOnGettingMoreOutOfKeen,
-          thingsYouMissedSindeYouLastLoggedIntoKeen: formValues.thingsYouMissedSindeYouLastLoggedIntoKeen,
-          newsAboutMetronicOnPartnerProductsAndOtherServices: formValues.newsAboutMetronicOnPartnerProductsAndOtherServices,
-          tipsOnMetronicBusinessProducts: formValues.tipsOnMetronicBusinessProducts
-        }
-      }
-    });
-
-    // Do request to your server for user update, we just imitate user update there
-    this.userService.isLoadingSubject.next(true);
-    setTimeout(() => {
-      this.userService.currentUserSubject.next(Object.assign({}, this.user));
-      this.userService.isLoadingSubject.next(false);
-    }, 2000);
-  }
-
-  cancel() {
-    this.user = Object.assign({}, this.firstUserState);
-    this.loadForm();
-  }
 }

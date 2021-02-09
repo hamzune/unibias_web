@@ -1,158 +1,307 @@
 <!--begin::Quick Actions Panel-->
-<div
-  id="kt_quick_actions"
-  class="offcanvas p-10"
-  [ngClass]="extrasQuickActionsOffcanvasDirectionCSSClasses"
->
+<div id="kt_quick_actions" class="offcanvas p-10 text-light" [ngClass]="extrasQuickActionsOffcanvasDirectionCSSClasses">
+
+  <a id="kt_quick_actions_close"></a>
   <!--begin::Header-->
-  <div
-    class="offcanvas-header d-flex align-items-center justify-content-between pb-10"
-  >
-    <h3 class="font-weight-bold m-0">
-      Quick Actions
-      <small class="text-muted font-size-sm ml-2">finance & reports</small>
+  <div class="offcanvas-header d-flex align-items-center justify-content-between pb-10">
+    <h3 class="font-weight-bold ">
+      Overview
     </h3>
-    <a
-      href="#"
-      class="btn btn-xs btn-icon btn-light btn-hover-primary"
-      id="kt_quick_actions_close"
-    >
+    <!-- <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_actions_close">
       <i class="ki ki-close icon-xs text-muted"></i>
-    </a>
+    </a> -->
+    <div ngbDropdown placement="bottom-right" class="dropdown dropdown-inline " title="Quick actions">
+      <a ngbDropdownToggle class="btn btn-clean btn-primary btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <i class="ki ki-bold-more-ver "></i>
+      </a>
+      <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right">
+        <!--begin::Navigation-->
+        <ul class="navi navi-hover ">
+          <li class="navi-item">
+            <a class="navi-link cursor-pointer">
+              <span class="navi-icon"><i class="flaticon2-gear"></i></span>
+              <span class="navi-text">Settings</span>
+            </a>
+          </li>
+          <ng-container *ngIf="event?.groupId != '1'">
+            <li class="navi-item">
+              <a class="navi-link cursor-pointer">
+                <span class="navi-icon"><i class="flaticon-edit"></i></span>
+                <span class="navi-text">Edit</span>
+              </a>
+            </li>
+
+            <li class="navi-separator my-1"></li>
+
+            <li class="navi-item " (click)="deleteEvent()">
+              <a class="navi-link cursor-pointer">
+                <span class="navi-icon"><i class="flaticon-delete-1"></i></span>
+                <span class="navi-text">Delete</span>
+              </a>
+            </li>
+          </ng-container>
+        </ul>
+        <!--end::Navigation-->
+
+      </div>
+    </div>
   </div>
+
+
   <!--end::Header-->
-
-  <!--begin::Content-->
   <div class="offcanvas-content pr-5 mr-n5">
-    <div class="row gutter-b">
-      <!--begin::Item-->
-      <div class="col-6">
-        <a
-          href="#"
-          class="btn btn-block btn-light btn-hover-primary text-dark-50 text-center py-10 px-5"
-        >
-          <span
-            [inlineSVG]="'./assets/media/svg/icons/Shopping/Euro.svg'"
-            cacheSVG="true"
-            class="svg-icon svg-icon-3x svg-icon-primary m-0"
-          ></span>
-          <span class="d-block font-weight-bold font-size-h6 mt-2"
-            >Accounting</span
-          >
-        </a>
-      </div>
-      <!--end::Item-->
+    <div class="navi navi-icon-circle navi-spacer-x-0">
+      <ng-container>
+        <div class="class-data">
 
-      <!--begin::Item-->
-      <div class="col-6">
-        <a
-          href="#"
-          class="btn btn-block btn-light btn-hover-primary text-dark-50 text-center py-10 px-5"
-        >
-          <span
-            [inlineSVG]="
-              './assets/media/svg/icons/Communication/Mail-attachment.svg'
-            "
-            cacheSVG="true"
-            class="svg-icon svg-icon-3x svg-icon-primary m-0"
-          ></span>
-          <span class="d-block font-weight-bold font-size-h6 mt-2"
-            >Members</span
-          >
-        </a>
-      </div>
-      <!--end::Item-->
-    </div>
-    <div class="row gutter-b">
-      <!--begin::Item-->
-      <div class="col-6">
-        <a
-          href="#"
-          class="btn btn-block btn-light btn-hover-primary text-dark-50 text-center py-10 px-5"
-        >
-          <span
-            [inlineSVG]="'./assets/media/svg/icons/Shopping/Box2.svg'"
-            cacheSVG="true"
-            class="svg-icon svg-icon-3x svg-icon-primary m-0"
-          ></span>
-          <span class="d-block font-weight-bold font-size-h6 mt-2"
-            >Projects</span
-          >
-        </a>
-      </div>
-      <!--end::Item-->
+          <h1 class="mt-3 mb-10">
+            <b>
+              {{event?.title}}
+              <!-- Analytics Meeting -->
+            </b>
+          </h1>
+          <!--begin::Item-->
+          <a class="navi-item cursor-pointer" href="/#">
+            <div class="navi-link">
+              <div class="symbol symbol-40 mr-3" style="background: rgba(255, 255, 255, 0.2) !important;">
+                <div class="symbol-label bg-transparent">
+                  <span [inlineSVG]="
+                          './assets/media/svg/icons/Home/Clock.svg'
+                        " cacheSVG="true" class="svg-icon svg-icon-md svg-icon-light"></span>
+                </div>
+              </div>
+              <div class="navi-text">
+                <div class="font-weight-bold text-light text-uppercase">
+                  <b>{{event?.startStr | date:'fullDate' }}</b>
 
-      <!--begin::Item-->
-      <div class="col-6">
-        <a
-          href="#"
-          class="btn btn-block btn-light btn-hover-primary text-dark-50 text-center py-10 px-5"
-        >
-          <span
-            [inlineSVG]="'./assets/media/svg/icons/Communication/Group.svg'"
-            cacheSVG="true"
-            class="svg-icon svg-icon-3x svg-icon-primary m-0"
-          ></span>
-          <span class="d-block font-weight-bold font-size-h6 mt-2"
-            >Customers</span
-          >
-        </a>
-      </div>
-      <!--end::Item-->
-    </div>
-    <div class="row gutter-b">
-      <!--begin::Item-->
-      <div class="col-6">
-        <a
-          href="#"
-          class="btn btn-block btn-light btn-hover-primary text-dark-50 text-center py-10 px-5"
-        >
-          <span
-            [inlineSVG]="'./assets/media/svg/icons/Shopping/Chart-bar1.svg'"
-            cacheSVG="true"
-            class="svg-icon svg-icon-3x svg-icon-primary m-0"
-          ></span>
-          <span class="d-block font-weight-bold font-size-h6 mt-2">Email</span>
-        </a>
-      </div>
-      <!--end::Item-->
+                </div>
 
-      <!--begin::Item-->
-      <div class="col-6">
-        <a
-          href="#"
-          class="btn btn-block btn-light btn-hover-primary text-dark-50 text-center py-10 px-5"
-        >
-          <span
-            [inlineSVG]="'./assets/media/svg/icons/Design/Color-profile.svg'"
-            cacheSVG="true"
-            class="svg-icon svg-icon-3x svg-icon-primary m-0"
-          ></span>
-          <span class="d-block font-weight-bold font-size-h6 mt-2"
-            >Settings</span
-          >
+                <ng-container *ngIf="event?.allDay; else elseTemplate">
+                  <div class="text-light">
+                    All day
+                  </div>
+                </ng-container>
+                <ng-template #elseTemplate>
+                  <div class="text-light">
+                    {{event?.startStr | date:'HH:mm' }}
+                    -
+                    {{event?.endStr | date:'HH:mm' }}
+                  </div>
+                </ng-template>
+                
+                
+              </div>
+            </div>
+          </a>
+          <!--end:Item-->
+
+          <!--begin::Item-->
+          <a class="navi-item cursor-pointer" *ngIf="event?.extendedProps?.priority">
+            <div class="navi-link">
+              <div class="symbol symbol-40 mr-3" style="background: rgba(255, 255, 255, 0.2) !important;">
+                <div class="symbol-label bg-transparent">
+                  <span [inlineSVG]="
+                './assets/media/svg/icons/Code/Warning-2.svg'
+              " cacheSVG="true" class="svg-icon svg-icon-md svg-icon-light"></span>
+                </div>
+              </div>
+              <div class="navi-text">
+                <div class="font-weight-bold text-light text-uppercase">
+                  <b> Priority</b>
+                </div>
+                <div class="text-light">
+ 
+                    {{event?.extendedProps?.priority}}
+                 
+                </div>
+              </div>
+            </div>
+          </a>
+          <!--end:Item-->
+          <!--begin::Item-->
+          <a class="navi-item cursor-pointer" *ngIf="event?.extendedProps?.room">
+            <div class="navi-link">
+              <div class="symbol symbol-40 mr-3" style="background: rgba(255, 255, 255, 0.2) !important;">
+                <div class="symbol-label bg-transparent">
+                  <span [inlineSVG]="
+                './assets/media/svg/icons/Code/Warning-1-circle.svg'
+              " cacheSVG="true" class="svg-icon svg-icon-md svg-icon-light"></span>
+                </div>
+              </div>
+              <div class="navi-text">
+                <div class="font-weight-bold text-light text-uppercase">
+                  <b>Classroom</b>
+                </div>
+                <div class="text-light">
+                  {{event?.extendedProps?.room}}
+                </div>
+              </div>
+            </div>
+          </a>
+          <!--end:Item-->
+          <!--begin::Item-->
+          <a class="navi-item cursor-pointer" *ngIf="event?.extendedProps?.description">
+            <div class="navi-link">
+              <div class="symbol symbol-40 mr-3" style="background: rgba(255, 255, 255, 0.2) !important;">
+                <div class="symbol-label bg-transparent">
+                  <span [inlineSVG]="
+                './assets/media/svg/icons/Code/Warning-1-circle.svg'
+              " cacheSVG="true" class="svg-icon svg-icon-md svg-icon-light"></span>
+                </div>
+              </div>
+              <div class="navi-text">
+                <div class="font-weight-bold text-light text-uppercase">
+                  <b>Description</b>
+                </div>
+                <div class="text-light">
+                  {{event?.extendedProps?.description}}
+                </div>
+              </div>
+            </div>
+          </a>
+          <!--end:Item-->
+          <!--begin::Item-->
+          <a class="navi-item cursor-pointer" *ngIf="event?.extendedProps?.location">
+            <div class="navi-link">
+              <div class="symbol symbol-40 mr-3" style="background: rgba(255, 255, 255, 0.2) !important;">
+                <div class="symbol-label bg-transparent">
+                  <span [inlineSVG]="
+                          './assets/media/svg/icons/Code/Warning-1-circle.svg'
+                        " cacheSVG="true" class="svg-icon svg-icon-md svg-icon-light"></span>
+                </div>
+              </div>
+              <div class="navi-text">
+                <div class="font-weight-bold text-light text-uppercase">
+                  <b>Location</b>
+                </div>
+                <div class="text-light">
+                  {{event?.extendedProps?.location}}
+                </div>
+              </div>
+            </div>
+          </a>
+          <!--end:Item-->
+          <!--begin::Item-->
+          <a class="navi-item cursor-pointer" *ngIf="event?.extendedProps?.attachments">
+            <div class="navi-link">
+              <div class="symbol symbol-40 mr-3" style="background: rgba(255, 255, 255, 0.2) !important;">
+                <div class="symbol-label bg-transparent">
+                  <span [inlineSVG]="
+                        './assets/media/svg/icons/General/Clip.svg'
+                      " cacheSVG="true" class="svg-icon svg-icon-md svg-icon-light"></span>
+                </div>
+              </div>
+              <div class="navi-text">
+                <div class="font-weight-bold text-light text-uppercase">
+                  <b> attachments</b>
+                </div>
+                <div class="text-light">
+                  {{event?.extendedProps?.attachments}}
+                  <!-- Analytics_report.xls
+                  Project_Overview.ppt -->
+
+                </div>
+              </div>
+            </div>
+          </a>
+          <!--end:Item-->
+        </div>
+
+      </ng-container>
+      <ng-container>
+        <!--begin::Separator-->
+        <div class="separator separator-solid mt-8 mb-5"></div>
+        <!--end::Separator-->
+        <!--begin::Item-->
+        <a class="navi-item">
+          <div class="navi-link">
+            <h2 class="text-light mr-5">
+              <b>
+                Attendees
+              </b>
+            </h2>
+            <div class="navi-text">
+              <div class="symbol symbol-30 mr-3" style="background: rgba(255, 255, 255, 0.2) !important;">
+                <div class="symbol-label bg-transparent text-light">
+                  03
+                </div>
+              </div>
+            </div>
+          </div>
         </a>
-      </div>
-      <!--end::Item-->
-    </div>
-    <div class="row">
-      <!--begin::Item-->
-      <div class="col-6">
-        <a
-          href="#"
-          class="btn btn-block btn-light btn-hover-primary text-dark-50 text-center py-10 px-5"
-        >
-          <span
-            [inlineSVG]="'./assets/media/svg/icons/Shopping/Euro.svg'"
-            cacheSVG="true"
-            class="svg-icon svg-icon-3x svg-icon-primary m-0"
-          ></span>
-          <span class="d-block font-weight-bold font-size-h6 mt-2">Orders</span>
+        <!--end:Item-->
+
+        <!--begin::User-->
+        <a class="navi-item cursor-pointer">
+          <div class="navi-link">
+            <div class="symbol symbol-40 mr-3" style="background: rgba(255, 255, 255, 0) !important;">
+              <div class="symbol-label"
+                style="background-image: url('https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg');border-radius: 40%;">
+              </div>
+            </div>
+            <div class="navi-text">
+              <div class="font-weight-bold text-light text-capitalize">
+                Cammy Hedling
+              </div>
+            </div>
+            <!--begin:Active-->
+            <div class="symbol symbol-20 mr-3 bg-transparent">
+              <i class="symbol-badge bg-success status "></i>
+            </div>
+            <!--end:Active-->
+          </div>
         </a>
-      </div>
-      <!--end::Item-->
+        <!--end:User-->
+
+        <!--begin::User-->
+        <a class="navi-item cursor-pointer">
+          <div class="navi-link">
+            <div class="symbol symbol-40 mr-3" style="background: rgba(255, 255, 255, 0) !important;">
+              <div class="symbol-label"
+                style="background-image: url('https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg');border-radius: 40%;">
+              </div>
+            </div>
+            <div class="navi-text">
+              <div class="font-weight-bold text-light text-capitalize">
+                Cammy Hedling
+              </div>
+            </div>
+            <!--begin:Active-->
+            <!-- <div class="symbol symbol-20 mr-3 bg-transparent">
+              <i class="symbol-badge bg-success status "></i>
+            </div> -->
+            <!--end:Active-->
+          </div>
+        </a>
+        <!--end:User-->
+
+
+        <!--begin::User-->
+        <a class="navi-item cursor-pointer">
+          <div class="navi-link">
+            <div class="symbol symbol-40 mr-3" style="background: rgba(255, 255, 255, 0) !important;">
+              <div class="symbol-label"
+                style="background-image: url('https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg');border-radius: 40%;">
+              </div>
+            </div>
+            <div class="navi-text">
+              <div class="font-weight-bold text-light text-capitalize">
+                Cammy Hedling
+              </div>
+            </div>
+            <!--begin:Active-->
+            <div class="symbol symbol-20 mr-3 bg-transparent">
+              <i class="symbol-badge bg-success status "></i>
+            </div>
+            <!--end:Active-->
+          </div>
+        </a>
+        <!--end:User-->
+
+      </ng-container>
     </div>
   </div>
-  <!--end::Content-->
+
 </div>
 <!--end::Quick Actions Panel-->
